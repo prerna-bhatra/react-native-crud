@@ -1,6 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View ,StatusBar, TextInput } from 'react-native';
+import { StyleSheet, Text, View ,StatusBar, TextInput,TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-paper';
 
 export default function App() {
@@ -23,6 +23,10 @@ export default function App() {
           <button >
             Sign Up
           </button>
+
+          <TouchableOpacity>
+          <Text >Already Have an account ?</Text>
+          </TouchableOpacity>
       </View>
   );
 }
