@@ -1,52 +1,32 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View ,StatusBar, TextInput,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View ,StatusBar, TextInput,TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
 import { Button } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SignUpScreen from './screens/SignUpScreen';
+import LoginScreen from './screens/LoginScreen';
+import LoadingScreen from './screens/LoadingScreen';
+import HomeScreen from './screens/HomeScreen';
 
+const Stack = createStackNavigator();
 export default function App() {
   return (
-      <View style={styles.container}>
-      <Text style={{marginLeft:18,fontSize:35,color:"grey"}}>Welcome to </Text>
-        <Text style={styles.row}>React Native CRUD</Text>
-        <Text style={{marginLeft:18,fontSize:30,color:"grey"}}>Create Account</Text>
-        {/* <Text >Email</Text> */}
-        <TextInput
-         style={styles.input}
-        placeholder=" Email"
-
-      />
-      <TextInput
-            style={styles.input}
-            placeholder="Password"
-
-          />
-          <button >
-            Sign Up
-          </button>
-
-          <TouchableOpacity>
-          <Text >Already Have an account ?</Text>
-          </TouchableOpacity>
-      </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
+  
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  row: {
-    padding: 4,
-    borderBottomColor: "blue",
-    borderBottomWidth: 10
-  },
-  input: {
-    paddingLeft:10,
-    height: 30,
-    margin: 12,
-    borderWidth: 1,
-  },
+  // loading: {
+  //   flex: 1,
+  //   backgroundColor: '#fff',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // }
 });

@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "demo test ",
+    "githubUrl": "https://github.com/prerna-bhatra/react-native-crud"
   }
 }
