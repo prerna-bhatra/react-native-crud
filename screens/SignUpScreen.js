@@ -1,9 +1,19 @@
 // import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React ,{useState} from 'react';
 import { StyleSheet, Text, View ,StatusBar, TextInput,TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
 import { Button } from 'react-native-paper';
 
+
 export default function SignUpScreen(props) {
+  
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+
+  const sendCred=()=>
+  {
+    console.log(email,password)
+  }
+
   return (
     <KeyboardAvoidingView behavior="position">
       <View style={styles.container}>
@@ -13,17 +23,24 @@ export default function SignUpScreen(props) {
         {/* <Text >Email</Text> */}
         <TextInput
          style={styles.input}
+         value={email}
         placeholder=" Email"
+        onChangeText={(text)=>setEmail(text)}
 
       />
       <TextInput
             style={styles.input}
             placeholder="Password"
-
+            value={password}
+            onChangeText={(text)=>setPassword(text)}
           />
-          <button >
-            Sign Up
-          </button>
+     
+          <Button
+          onPress={() => sendCred()}
+          >
+           SignUp
+           </Button>
+           
 
           <TouchableOpacity>
           <Text 
