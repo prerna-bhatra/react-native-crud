@@ -1,5 +1,5 @@
 // import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View ,StatusBar, TextInput,TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
 import { Button } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,6 +11,11 @@ import HomeScreen from './screens/HomeScreen';
 
 const Stack = createStackNavigator();
 export default function App() {
+
+  // useEffect(()=>{
+   
+  // },[])
+
   return (
     <NavigationContainer>
     <Stack.Navigator>

@@ -5,22 +5,57 @@ import { Button } from 'react-native-paper';
 
 
 export default function SignUpScreen(props) {
-  
+  const [name,setName]=useState('');
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
+  const [loading,setLoading]=useState('');
 
   const sendCred=()=>
   {
-    console.log(email,password)
+    // console.log(email,password)
+    setLoading(true)
+
+    fetch("http://localhost:8000/api/signup",
+    {
+      method:"POST",
+      headers:{
+        mode: 'no-cors',
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        "name":name,
+        "email":email,
+        "password":password
+      })
+
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      // console.log(data);
+      setLoading(false)
+      alert("SUCCESSFULLY SIGNUP,Please Login ")
+      props.navigation.navigate("Login")
+
+    })
   }
 
   return (
     <KeyboardAvoidingView behavior="position">
       <View style={styles.container}>
+        
+        
       <Text style={{marginLeft:18,fontSize:35,color:"grey"}}>Welcome to </Text>
         <Text style={styles.row}>React Native CRUD</Text>
         <Text style={{marginLeft:18,fontSize:30,color:"grey"}}>Create Account</Text>
         {/* <Text >Email</Text> */}
+        <TextInput
+            style={styles.input}
+            placeholder="name"
+            value={name}
+            onChangeText={(text)=>setName(text)}
+          />
+     
+
         <TextInput
          style={styles.input}
          value={email}
@@ -41,7 +76,7 @@ export default function SignUpScreen(props) {
            SignUp
            </Button>
            
-
+           <Text style={styles.loading}>{loading?'Loading... ,Please Wait ':''}</Text>
           <TouchableOpacity>
           <Text 
           onPress={()=>props.navigation.navigate("Login")}
@@ -71,4 +106,9 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
   },
+  loading:
+  {
+    fontSize:40,
+    color:'blue'
+  }
 });
